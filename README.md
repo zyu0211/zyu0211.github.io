@@ -1,2 +1,1 @@
-# imgs
-images for my typora
+# zyu_blog
