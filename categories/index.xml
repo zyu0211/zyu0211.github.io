@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Categories - Category - ZYU个人博客</title>
+        <link>https://zyu0211.github.io/categories/</link>
+        <description>Categories - Category - ZYU个人博客</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>zyuxud@163.com (zyu)</managingEditor>
+            <webMaster>zyuxud@163.com (zyu)</webMaster><lastBuildDate>Wed, 31 Aug 2022 19:56:56 &#43;0800</lastBuildDate><atom:link href="https://zyu0211.github.io/categories/" rel="self" type="application/rss+xml" /><item>
+    <title>manual</title>
+    <link>https://zyu0211.github.io/categories/manual/</link>
+    <pubDate>Wed, 31 Aug 2022 19:56:56 &#43;0800</pubDate>
+    <author>zyu</author>
+    <guid>https://zyu0211.github.io/categories/manual/</guid>
+    <description><![CDATA[]]></description>
+</item>
+</channel>
+</rss>

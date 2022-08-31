@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>markdown - Tag - ZYU个人博客</title>
+        <link>https://zyu0211.github.io/tags/markdown/</link>
+        <description>markdown - Tag - ZYU个人博客</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>zyuxud@163.com (zyu)</managingEditor>
+            <webMaster>zyuxud@163.com (zyu)</webMaster><lastBuildDate>Wed, 31 Aug 2022 19:56:56 &#43;0800</lastBuildDate><atom:link href="https://zyu0211.github.io/tags/markdown/" rel="self" type="application/rss+xml" /><item>
+    <title>Markdown基本语法</title>
+    <link>https://zyu0211.github.io/posts/markdown_logs/</link>
+    <pubDate>Wed, 31 Aug 2022 19:56:56 &#43;0800</pubDate>
+    <author>zyu</author>
+    <guid>https://zyu0211.github.io/posts/markdown_logs/</guid>
+    <description><![CDATA[标题与正文 # 一级标题 ## 二级标题 ### 三级标题 正文：每个# 代表一级标题，总共有六级标题 aaa 代表斜体 *aaa* aaa 代表加粗 **aaa** aaa 代表斜体和加粗 ***aaa*** ==aaa== 代表高亮 ==aaa== 删除线]]></description>
+</item>
+</channel>
+</rss>
