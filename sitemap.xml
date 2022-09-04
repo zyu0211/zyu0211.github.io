@@ -2,13 +2,16 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
-            <loc>https://zyu0211.github.io/categories/</loc><lastmod>2022-08-31T19:56:56&#43;08:00</lastmod></url><url>
+            <loc>https://zyu0211.github.io/categories/</loc><lastmod>2022-09-04T15:04:45&#43;08:00</lastmod></url><url>
+            <loc>https://zyu0211.github.io/tags/java/</loc><lastmod>2022-09-04T15:04:45&#43;08:00</lastmod></url><url>
+            <loc>https://zyu0211.github.io/posts/</loc><lastmod>2022-09-04T15:04:45&#43;08:00</lastmod></url><url>
+            <loc>https://zyu0211.github.io/posts/springcloud/</loc><lastmod>2022-09-04T15:04:45&#43;08:00</lastmod></url><url>
+            <loc>https://zyu0211.github.io/tags/</loc><lastmod>2022-09-04T15:04:45&#43;08:00</lastmod></url><url>
+            <loc>https://zyu0211.github.io/</loc><lastmod>2022-09-04T15:04:45&#43;08:00</lastmod></url><url>
+            <loc>https://zyu0211.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc><lastmod>2022-09-04T15:04:45&#43;08:00</lastmod></url><url>
             <loc>https://zyu0211.github.io/categories/manual/</loc><lastmod>2022-08-31T19:56:56&#43;08:00</lastmod></url><url>
             <loc>https://zyu0211.github.io/tags/markdown/</loc><lastmod>2022-08-31T19:56:56&#43;08:00</lastmod></url><url>
             <loc>https://zyu0211.github.io/posts/markdown_logs/</loc><lastmod>2022-08-31T19:56:56&#43;08:00</lastmod></url><url>
-            <loc>https://zyu0211.github.io/posts/</loc><lastmod>2022-08-31T19:56:56&#43;08:00</lastmod></url><url>
-            <loc>https://zyu0211.github.io/tags/</loc><lastmod>2022-08-31T19:56:56&#43;08:00</lastmod></url><url>
-            <loc>https://zyu0211.github.io/</loc><lastmod>2022-08-31T19:56:56&#43;08:00</lastmod></url><url>
             <loc>https://zyu0211.github.io/tags/ubuntu/</loc><lastmod>2022-08-31T19:43:58&#43;08:00</lastmod></url><url>
             <loc>https://zyu0211.github.io/posts/ubuntu_logs/</loc><lastmod>2022-08-31T19:43:58&#43;08:00</lastmod></url><url>
             <loc>https://zyu0211.github.io/tags/hugo/</loc><lastmod>2022-08-31T16:13:58&#43;08:00</lastmod></url><url>
