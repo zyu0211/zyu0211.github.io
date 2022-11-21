@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ZYU BOOk</title>
+    <link>https://zyu0211.github.io/</link>
+    <description>Recent content on ZYU BOOk</description>
+    <generator>Hugo -- gohugo.io</generator><atom:link href="https://zyu0211.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>SSM三件套</title>
+      <link>https://zyu0211.github.io/spring/SSM/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://zyu0211.github.io/spring/SSM/</guid>
+      <description>Mybatis#一、Mybatis 简介#1.1 MyBatis 历史#MyBatis最初是Apache的一个开源项目iBatis, 2010年6月这个项目由Apache Software Foundation迁 移到了Google Code。随着开发团队转投Google Code旗下， iBatis3.x正式更名为MyBatis。代码于 2013年11月迁移到Github。 iBatis一词来源于“internet”和“abatis”的组合，是一个基于Java的持久层框架。 iBatis提供的持久层框架 包括SQL Maps和Data Access Objects（DAO）。 1.2 MyBatis 特性#MyBatis 是支持定制化 SQL、存储过程以及高级映射的优秀的持久层框架 MyBatis 避免了几乎所有的 JDBC 代码和手动设置参数以及获取结果集 MyBatis可以使用简单的XML或注解用于配置和原始映射，将接口和Java的POJO（Plain Old Java Objects，普通的Java对象）映射成数据库中的记录 MyBatis 是一个 半自动的ORM（Object Relation Mapping）框架 1.3 MyBatis 下载#MyBatis下载地址：https://github.com/mybatis/mybatis-3
+1.4 和其它持久化层技术对比#JDBC SQL 夹杂在Java代码中耦合度高，导致硬编码内伤 维护不易且实际开发需求中 SQL 有变化，频繁修改的情况多见 代码冗长，开发效率低 Hibernate 和 JPA 操作简便，开发效率高 程序中的长难复杂 SQL 需要绕过框架 内部自动生产的 SQL，不容易做特殊优化 基于全映射的全自动框架，大量字段的 POJO 进行部分映射时比较困难 反射操作太多，导致数据库性能下降 MyBatis 轻量级，性能出色 SQL 和 Java 编码分开，功能边界清晰；Java代码专注业务、SQL语句专注数据 开发效率稍逊于HIbernate，但是完全能够接受 二、Mybaits 搭建#2.</description>
+    </item>
+    
+    <item>
+      <title>Spring Boot</title>
+      <link>https://zyu0211.github.io/spring/SpringBoot2/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://zyu0211.github.io/spring/SpringBoot2/</guid>
+      <description>一、SpringBoot基础入门#1、Spring与SpringBoot#SpringBoot是整合Spring技术栈的一站式框架，是简化Spring技术栈的快速开发脚手架。
+Spring官网：https://spring.io/
+SpringBoot官方资料：https://spring.io/projects/spring-boot
+SpringBoot的优点：
+创建独立Spring应用 内嵌web服务器 自动starter依赖，简化构建配置 自动配置Spring以及第三方功能 提供生产级别的监控、健康检查及外部化配置 无代码生成、无需编写XML 2、SpringBoot2入门#HelloWorld：浏览发送 /hello 请求，响应 Hello，Spring Boot 2 。
+创建maven工程
+引入依赖
+&amp;lt;parent&amp;gt; &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;spring-boot-starter-parent&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;2.3.12.RELEASE&amp;lt;/version&amp;gt; &amp;lt;/parent&amp;gt; &amp;lt;dependencies&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;spring-boot-starter-web&amp;lt;/artifactId&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;/dependencies&amp;gt; 创建主程序
+/** * 主程序类 * @SpringBootApplication：这是一个SpringBoot应用 */ @SpringBootApplication public class MainApplication { public static void main(String[] args) { SpringApplication.run(MainApplication.class, args); } } 编写业务
+@RestController public class HelloController { @RequestMapping(&amp;#34;/hello&amp;#34;) public String handle01(){ return &amp;#34;Hello, Spring Boot 2!</description>
+    </item>
+    
+    <item>
+      <title>javaSE</title>
+      <link>https://zyu0211.github.io/java/javaSE/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://zyu0211.github.io/java/javaSE/</guid>
+      <description>一、基础概念#1、Java语言概述#1.1 软件开发介绍#软件开发：一系列按照特定顺序组织的计算机数据和指令的集合。软件有系统软件和应用软件之分。 人机交互方式： 图形化界面(Graphical User Interface GUI)：这种方式简单直观，使用者易于接受，容易上手操作 命令行方式(Command Line InterfaceCLI)：需要有一个控制台，输入特定的指令，让计算机完成一些操作。较为麻烦，需要记录住一些命令。 常用的DOS命令 ⊞+R，一起按下，输入cmd，可以打开dos界面。 dir :列出当前目录下的文件以及文件夹 md :创建目录 rd :删除目录 cd :进入指定目录 cd… : 退回到上一级目录 del :删除文件 exit : 退出dos 命令行 常用快捷键 ← →：移动光标 ↑↓：调阅历史操作命令 Delete和Backspace：删除字符 注意：在输入dos命令时，要是用英文输入，所有标点符号都是英文。 1.2 计算机编程语言介绍#计算机语言：人与计算机交流的方式。如果人要与计算机交流，那么就要学习计算机语言。计算机语言有很多种，如：C，C++，Java，PHP，Kotlin，Python，Scala等。 第一代语言 机器语言：指令以二进制代码形式存在。 第二代语言 汇编语言：使用助记符表示一条机器指令。 第三代语言： 高级语言： C、Pascal、Fortran面向过程的语言 C++面向过程/面向对象 Java跨平台的纯面向对象的语言 .NET跨语言的平台 Python、Scala… 1.3 Java语言概述#java是SUN(Stanford University Network，斯坦福大学网络公司) 1995年推出的一门高级编程语言。 Java简史 1991年，Green项目，开发语言最初命名为Oak (橡树) 1994年，开发组意识到Oak 非常适合于互联网 1996年，发布JDK 1.</description>
+    </item>
+    
+    <item>
+      <title>JavaWeb入门</title>
+      <link>https://zyu0211.github.io/java/javaweb/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://zyu0211.github.io/java/javaweb/</guid>
+      <description>笔记链接：http://heavy_code_industry.gitee.io/code_heavy_industry/pro001-javaweb/
+一、基础知识#常见异常#200 : 正常响应 404 : 找不到资源 405 : 请求方式不支持 500 : 服务器内部错误 Tomcat服务器#编码设置#tomcat8之前，设置编码：
+get请求方式：
+//get方式目前不需要设置编码（基于tomcat8） //如果是get请求发送的中文数据，转码稍微有点麻烦（tomcat8之前） String fname = request.getParameter(&amp;#34;fname&amp;#34;);//1.获取字符串 byte[] bytes = fname.getBytes(&amp;#34;ISO-8859-1&amp;#34;); //2.将字符串打散成字节数组 fname = new String(bytes,&amp;#34;UTF-8&amp;#34;); //3.将字节数组按照设定的编码重新组装成字符串 post请求方式：
+request.setCharacterEncoding(&amp;#34;UTF-8&amp;#34;); //在获取字符串之前 tomcat8开始，设置编码，只需要针对post方式
+request.setCharacterEncoding(&amp;#34;UTF-8&amp;#34;); 注意： 需要注意的是，设置编码(post)这一句代码必须在所有的获取参数动作之前
+Servlet的继承关系#继承关系 javax.servlet.Servlet接口 &amp;mdash;javax.servlet.GenericServlet抽象类 &amp;mdash;&amp;mdash;javax.servlet.http.HttpServlet抽象子类
+相关方法 (重点查看的是服务方法service() )
+javax.servlet.**Servlet **接口：
+public interface Servlet { //初始化方法 void init(ServletConfig var1) throws ServletException; ServletConfig getServletConfig(); //服务方法 void service(ServletRequest var1, ServletResponse var2) throws ServletException, IOException; String getServletInfo(); //销毁方法 void destroy(); } javax.</description>
+    </item>
+    
+    <item>
+      <title>JDBC核心技术</title>
+      <link>https://zyu0211.github.io/mysql/JDBC/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://zyu0211.github.io/mysql/JDBC/</guid>
+      <description>第1章：JDBC概述#1.1 数据的持久化#持久化(persistence)：把数据保存到可掉电式存储设备中以供之后使用。大多数情况下，特别是企业级应用，数据持久化意味着将内存中的数据保存到硬盘上加以”固化”，而持久化的实现过程大多通过各种关系数据库来完成。
+持久化的主要应用是将内存中的数据存储在关系型数据库中，当然也可以存储在磁盘文件、XML数据文件中。
+1.2 Java中的数据存储技术#在Java中，数据库存取技术可分为如下几类：
+JDBC直接访问数据库
+JDO (Java Data Object )技术
+第三方O/R工具，如Hibernate, Mybatis 等
+JDBC是java访问数据库的基石，JDO、Hibernate、MyBatis等只是更好的封装了JDBC。
+1.3 JDBC介绍#JDBC(Java Database Connectivity)是一个独立于特定数据库管理系统、通用的SQL数据库存取和操作的公共接口（一组API），定义了用来访问数据库的标准Java类库，（java.sql、javax.sql）使用这些类库可以以一种标准的方法、方便地访问数据库资源。 JDBC为访问不同的数据库提供了一种统一的途径，为开发者屏蔽了一些细节问题。 JDBC的目标是使Java程序员使用JDBC可以连接任何提供了JDBC驱动程序的数据库系统，这样就使得程序员无需对特定的数据库系统的特点有过多的了解，从而大大简化和加快了开发过程。 如果没有JDBC，那么Java程序访问数据库时是这样的： 有了JDBC，Java程序访问数据库时是这样的： 总结如下： 1.4 JDBC体系结构#JDBC接口（API）包括两个层次： 面向应用的API：Java API，抽象接口，供应用程序开发人员使用（连接数据库，执行SQL语句，获得结果）。 面向数据库的API：Java Driver API，供开发商开发数据库驱动程序用。 JDBC是sun公司提供一套用于数据库操作的接口，java程序员只需要面向这套接口编程即可。
+不同的数据库厂商，需要针对这套接口，提供不同实现。不同的实现的集合，即为不同数据库的驱动。	————面向接口编程
+1.5 JDBC程序编写步骤#补充：ODBC(Open Database Connectivity，开放式数据库连接)，是微软在Windows平台下推出的。使用者在程序中只需要调用ODBC API，由 ODBC 驱动程序将调用转换成为对特定的数据库的调用请求。
+第2章：获取数据库连接#2.1 要素一：Driver接口实现类#2.1.1 Driver接口介绍#java.sql.Driver 接口是所有 JDBC 驱动程序需要实现的接口。这个接口是提供给数据库厂商使用的，不同数据库厂商提供不同的实现。
+在程序中不需要直接去访问实现了 Driver 接口的类，而是由驱动程序管理器类(java.sql.DriverManager)去调用这些Driver实现。
+Oracle的驱动：oracle.jdbc.driver.OracleDriver mySql的驱动： com.</description>
+    </item>
+    
+    <item>
+      <title>JVM内存与垃圾回收</title>
+      <link>https://zyu0211.github.io/jvm/JVM-Memory_GC/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://zyu0211.github.io/jvm/JVM-Memory_GC/</guid>
+      <description>一、JVM与java体系结构#1.1 虚拟机与Java虚拟机#虚拟机
+虚拟机(Virtual Machine)，是一款软件，用来执行一系列虚拟计算机指令。大体上，可以分为系统虚拟机和程序虚拟机。
+系统虚拟机：完全是对物理计算机的仿真，提供了一个可运行完整操作系统的软件平台，如Visual Box、VMware。 程序虚拟机：专门为执行单个计算机程序而设计，如Java虚拟机。 Java虚拟机
+Java虚拟机是一台执行Java字节码的虚拟计算机，它拥有独立的运行机制，负责装载字节码到其内部，解释编译为对应平台上的机器指令执行。JVM平台的各种语言可以共享Java虚拟机带来的跨平台性、优秀的垃圾回器、可靠的即时编译器。
+特点：
+一次编译，到处运行 自动内存管理 自动垃圾回收功能 JVM是运行在操作系统之上的，他与硬件没有直接的交互，如下图所示，显示JVM的位置。
+1.2 JVM整体结构#1.3 Java代码执行流程#1.4 JVM的架构模型#Java虚拟机输入的指令流基本上是一种基于栈的指令集架构。
+基于栈的指令集架构：
+设计和实现简单，适用于资源受限的系统 避开寄存器的分配难题，使用零地址指令方式分配 指令流中的大部分指令是零地址指令，执行过程依赖于操作栈，指令集更小，编译器容易实现 不需要硬件支持，可移植性好，更好实现跨平台 基于寄存器的指令集架构：
+典型的应用是 X86 的二进制指令集，比如 Dablik 虚拟机 指令集架构完全依赖硬件，可以移植性差 性能优秀，执行更高效 多以一地址指令、二地址指令、三地址指令为主 1.5 JVM的生命周期#虚拟机的启动
+Java虚拟机的启动是通过引导类加载器(bootstrap class loader)创建一个初始化类(initial class)来完成的，这个类是由虚拟机的具体实现指定的。
+虚拟机的执行
+一个运行中的Java虚拟机有一个清晰的任务：执行Java程序 程序开始执行时他才运行，程序结束时他就停止 执行一个Java程序的时候，真正执行的是一个叫做Java虚拟机的进程 虚拟机的退出
+程序正常执行结束 程序在执行过程中遇到了异常或错误而终止 由于操作系统出现错误而导致Java虚拟机进程终止 某个线程调用Runtime类或System类的exit()方法，或Runtime类的halt()方法，并且Java安全管理器也允许这次的exit和halt操作 JNI Invocation API来加载或卸载Java虚拟机时，Java虚拟机退出 1.6 JVM的发展历程#1996年Java1.0时，Sun Classic VM，在JDK1.4时淘汰 JDK1.2时，Exact VM JDK1.</description>
+    </item>
+    
+    <item>
+      <title>JVM字节码与类的加载</title>
+      <link>https://zyu0211.github.io/jvm/JVM-Bytecode_ClassLoading/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://zyu0211.github.io/jvm/JVM-Bytecode_ClassLoading/</guid>
+      <description>第一节#1.1节#</description>
+    </item>
+    
+    <item>
+      <title>JVM性能监控与调优</title>
+      <link>https://zyu0211.github.io/jvm/JVM-Monitoring_Tuning/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://zyu0211.github.io/jvm/JVM-Monitoring_Tuning/</guid>
+      <description>标题1#标题2#</description>
+    </item>
+    
+    <item>
+      <title>MyBatis-Plus</title>
+      <link>https://zyu0211.github.io/%E4%B8%AD%E9%97%B4%E4%BB%B6/MyBatis-Plus/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://zyu0211.github.io/%E4%B8%AD%E9%97%B4%E4%BB%B6/MyBatis-Plus/</guid>
+      <description>一、简介及特性#MyBatis-Plus（简称 MP）是一个 MyBatis的增强工具，在 MyBatis 的基础上只做增强不做改变，为 简化开发、提高效率而生。
+官方地址: http://mp.baomidou.com
+Github: https://github.com/baomidou/mybatis-plus
+Gitee: https://gitee.com/baomidou/mybatis-plus
+文档发布地址: https://baomidou.com/pages/24112f
+特性：
+无侵入：只做增强不做改变，引入它不会对现有工程产生影响，如丝般顺滑 损耗小：启动即会自动注入基本 CURD，性能基本无损耗，直接面向对象操作 强大的 CRUD 操作：内置通用 Mapper、通用 Service，仅仅通过少量配置即可实现单表大部分 CRUD 操作，更有强大的条件构造器，满足各类使用需求 支持 Lambda 形式调用：通过 Lambda 表达式，方便的编写各类查询条件，无需再担心字段写错 支持主键自动生成：支持多达 4 种主键策略（内含分布式唯一 ID 生成器 - Sequence），可自由 配置，完美解决主键问题 支持 ActiveRecord 模式：支持 ActiveRecord 形式调用，实体类只需继承 Model 类即可进行强 大的 CRUD 操作 支持自定义全局通用操作：支持全局通用方法注入（ Write once, use anywhere ） 内置代码生成器：采用代码或者 Maven 插件可快速生成 Mapper 、 Model 、 Service 、 Controller 层代码，支持模板引擎，更有超多自定义配置等您来使用 内置分页插件：基于 MyBatis 物理分页，开发者无需关心具体操作，配置好插件之后，写分页等 同于普通 List 查询 分页插件支持多种数据库：支持 MySQL、MariaDB、Oracle、DB2、H2、HSQL、SQLite、 Postgre、SQLServer 等多种数据库 内置性能分析插件：可输出 SQL 语句以及其执行时间，建议开发测试时启用该功能，能快速揪出 慢查询 内置全局拦截插件：提供全表 delete 、 update 操作智能分析阻断，也可自定义拦截规则，预防 误操作 环境准备：</description>
+    </item>
+    
+    <item>
+      <title>MySQL基础篇</title>
+      <link>https://zyu0211.github.io/mysql/MySQL/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://zyu0211.github.io/mysql/MySQL/</guid>
+      <description>一、数据库概述#1、数据库概述#1.1 数据库的相关概念#DB：数据库(Database)
+存储数据的仓库，其本质是一个文件系统。
+DBMS：数据库管理系统(Database Management System)
+操纵和管理数据库的大型软件，用于建立、使用、维护数据库。
+SQL：结构化查询语言(Structured Query Language)
+专门用来与数据库通信的语言
+1.2 MySQL介绍#MySQL是一个开放源代码的关系型数据库管理系统，使用标准的SQL数据语言。 优点：体积小、速度快、总体拥有成本低、可处理上千万条记录，开发源码。 1.3 关系型数据库与非关系型数据库#关系型数据库(RDBMS)：把复杂的数据结构归结为简单的二元关系(二维表格)，以行(row)和列(column)的形式存储数据，这一系列的行和列被称为表(table)，一组表组成了一个库(database)。如：Oracle、MySQL。 非关系型数据库(非RDBMS)：基于见键值对存储数据，不需经过SQL层的解析，性能非常高。如：键值型数据库(Redis)、文档型数据库(MongoDB）、搜索引擎数据库、列式数据库、图形数据库。——NoSQL 1.4 关系型数据库设计规则#E-R模型(entity-relationship，实体-联系)，三个主要概念：实体集、属性、联系集。 表、记录、字段：与Java类的相似关系{类——表；实例——记录(行row)；属性——字段(列column)}。 表的关联关系：表与表之间的数据记录有关系，四种关系如下： 一对一关联 一对多关联 多对多关联：需要第三个表，称为联接表，它将多对多划分为两个一对多。 自我引用 2、MySQL环境搭建#2.1 MySQL的卸载#停止MySQL服务 软件的卸载：软件本身 残余文件的清理：数据库、表 清理注册表：win+r &amp;ndash;&amp;gt; 输入regedit &amp;ndash;&amp;gt; 删除MySQL服务相关项 删除环境变量的配置 2.2 MySQL的下载、安装、配置#版本选择：MySQL8.0；MySQL5.7 官网：https://www.mysql.com 安装教程：MySQL安装 2.3 MySQL的使用演示#服务的启动与停止 启动MySQL服务命令：net start MySQL服务名 停止MySQL服务命令：net stop MySQL服务名 登录与退出 登录： 简单版：mysql -u root -p；其中-u后是用户名；-p表示密码，回车后输入密码；用于访问本机且端口唯一。 完整版：mysql -u root -P 3306 -h localhost -p；-P表示端口号；-h表示IP地址。 退出：quit。 基本操作 show databases：显示数据库，初始化会有4个数据库，用于存储数据库相关信息。 create database test1：创建新数据库test1 。 drop database test1：删除数据库test1 。 use test1：切换到test1数据库下。 show tables：显示当前数据库下的表。 create table employees(id int, name varchar(15))：在当前数据库下创建表employees，括号里是表的属性。 insert into employees values(1003, &#39;张三&#39;)：向表employees中添加数据。 select * from employees：返回表employees中所有数据。 source 文件绝对路径：数据导入。 注意：MySQL5.</description>
+    </item>
+    
+    <item>
+      <title>MySQL高级特性篇</title>
+      <link>https://zyu0211.github.io/mysql/MySQL%E9%AB%98%E7%BA%A7/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://zyu0211.github.io/mysql/MySQL%E9%AB%98%E7%BA%A7/</guid>
+      <description>一、MySQL架构篇#1、Linux环境下MySQL的安装与使用#2、MySQL的数据目录#3、用户与权限管理#4、逻辑架构#5、存储引擎#二、索引与调优篇#1、索引的数据结构#2、InnoDN数据存储结构#3、索引的创建与设计原理#4、性能分析工具的使用#5、索引优化与查询优化#6、数据库的设计规范#7、数据库其他调优策略#三、事务篇#1、事务基础知识#2、MySQL事务日志#3、锁#4、多版本并发控制#四、日志与备份篇#1、其他数据库日志#2、主从复制#3、数据库备份与恢复#</description>
+    </item>
+    
+    <item>
+      <title>RabbitMQ</title>
+      <link>https://zyu0211.github.io/%E4%B8%AD%E9%97%B4%E4%BB%B6/RabbitMQ/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://zyu0211.github.io/%E4%B8%AD%E9%97%B4%E4%BB%B6/RabbitMQ/</guid>
+      <description>一、入门介绍#1、MQ的相关概念#1.1 什么是MQ#MQ(message queue)，本质是个队列，FIFO 先入先出，只不过队列中存放的内容是 message 而已，还是一种跨进程的通信机制，用于上下游传递消息。
+在互联网架构中，MQ 是一种非常常见的上下游 “逻辑解耦+物理解耦” 的消息通信服务。使用了 MQ 之后，消息发送上游只需要依赖 MQ，不 用依赖其他服务。
+1.2 为什么要MQ#流量消峰
+引用解耦
+异步处理
+1.3 MQ的分类#ActiveMQ 优点：单机吞吐量万级，时效性 ms 级，可用性高，基于主从架构实现高可用性，消息可靠性较 低的概率丢失数据 缺点：官方社区现在对 ActiveMQ 5.x 维护越来越少，高吞吐量场景较少使用。 Kafka 优点：性能卓越，单机写入 TPS 约在百万条/秒，最大的优点，就是吞吐量高；时效性 ms 级可用性非常高，kafka 是分布式的，一个数据多个副本，少数机器宕机，不会丢失数据，不会导致不可用，消费者采 用 Pull 方式获取消息，消息有序，通过控制能够保证所有消息被消费且仅被消费一次；有优秀的第三方 Kafka Web 管理界面 Kafka-Manager；在日志领域比较成熟，被多家公司和多个开源项目使用；功能支持： 功能较为简单，主要支持简单的 MQ 功能，在大数据领域的实时计算以及日志采集被大规模使用 缺点：Kafka 单机超过 64 个队列/分区，Load 会发生明显的飙高现象，队列越多，load 越高，发送消息响应时间变长，使用短轮询方式，实时性取决于轮询间隔时间，消费失败不支持重试；支持消息顺序， 但是一台代理宕机后，就会产生消息乱序，社区更新较慢 RocketMQ 优点：单机吞吐量十万级，可用性非常高，分布式架构，消息可以做到 0 丢失，MQ 功能较为完善，还是分 布式的，扩展性好，支持 10 亿级别的消息堆积，不会因为堆积导致性能下降，源码是 java 我们可以自己阅读源码，定制自己公司的 MQ 缺点：支持的客户端语言不多，目前是 java 及 c++，其中 c++不成熟；社区活跃度一般，没有在 MQ 核心中去实现 JMS 等接口，有些系统要迁移需要修改大量代码 RabbitMQ 优点：由于 erlang 语言的高并发特性，性能较好；吞吐量到万级，MQ 功能比较完备，健壮、稳定、易 用、跨平台、支持多种语言 如：Python、Ruby、.</description>
+    </item>
+    
+    <item>
+      <title>Spring Cloud</title>
+      <link>https://zyu0211.github.io/spring/SpringCloud/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://zyu0211.github.io/spring/SpringCloud/</guid>
+      <description>一、SpringCloud概述#1、版本选择#springboot：https://spring.io/projects/spring-boot
+springcloud：https://spring.io/projects/spring-cloud
+springcloud alibaba：https://github.com/alibaba/spring-cloud-alibaba
+详细查看版本依赖关系：https://start.spring.io/actuator/info ，返回详细 Json 信息
+版本依赖关系：
+Spring Cloud Alibaba Version Spring Cloud Version Spring Boot Version 2021.0.1.0 * Spring Cloud 2021.0.1 2.6.3 2021.1 Spring Cloud 2020.0.1 2.4.2 2.2.8.RELEASE * Spring Cloud Hoxton.SR12 2.3.12.RELEASE 2.2.7.RELEASE Spring Cloud Hoxton.SR12 2.3.12.RELEASE 2.2.6.RELEASE Spring Cloud Hoxton.SR9 2.3.2.RELEASE 2.1.4.RELEASE Spring Cloud Greenwich.SR6 2.1.13.RELEASE 2.2.1.RELEASE Spring Cloud Hoxton.SR3 2.2.5.RELEASE 2.2.0.RELEASE Spring Cloud Hoxton.RELEASE 2.2.X.RELEASE 2.</description>
+    </item>
+    
+  </channel>
+</rss>

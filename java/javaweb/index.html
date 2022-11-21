@@ -1,0 +1,1641 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="笔记链接：http://heavy_code_industry.gitee.io/code_heavy_industry/pro001-javaweb/
+一、基础知识#常见异常#200 : 正常响应 404 : 找不到资源 405 : 请求方式不支持 500 : 服务器内部错误 Tomcat服务器#编码设置#tomcat8之前，设置编码：
+get请求方式：
+//get方式目前不需要设置编码（基于tomcat8） //如果是get请求发送的中文数据，转码稍微有点麻烦（tomcat8之前） String fname = request.getParameter(&#34;fname&#34;);//1.获取字符串 byte[] bytes = fname.getBytes(&#34;ISO-8859-1&#34;); //2.将字符串打散成字节数组 fname = new String(bytes,&#34;UTF-8&#34;); //3.将字节数组按照设定的编码重新组装成字符串 post请求方式：
+request.setCharacterEncoding(&#34;UTF-8&#34;); //在获取字符串之前 tomcat8开始，设置编码，只需要针对post方式
+request.setCharacterEncoding(&#34;UTF-8&#34;); 注意： 需要注意的是，设置编码(post)这一句代码必须在所有的获取参数动作之前
+Servlet的继承关系#继承关系 javax.servlet.Servlet接口 &mdash;javax.servlet.GenericServlet抽象类 &mdash;&mdash;javax.servlet.http.HttpServlet抽象子类
+相关方法 (重点查看的是服务方法service() )
+javax.servlet.**Servlet **接口：
+public interface Servlet { //初始化方法 void init(ServletConfig var1) throws ServletException; ServletConfig getServletConfig(); //服务方法 void service(ServletRequest var1, ServletResponse var2) throws ServletException, IOException; String getServletInfo(); //销毁方法 void destroy(); } javax.">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="JavaWeb入门" />
+<meta property="og:description" content="笔记链接：http://heavy_code_industry.gitee.io/code_heavy_industry/pro001-javaweb/
+一、基础知识#常见异常#200 : 正常响应 404 : 找不到资源 405 : 请求方式不支持 500 : 服务器内部错误 Tomcat服务器#编码设置#tomcat8之前，设置编码：
+get请求方式：
+//get方式目前不需要设置编码（基于tomcat8） //如果是get请求发送的中文数据，转码稍微有点麻烦（tomcat8之前） String fname = request.getParameter(&#34;fname&#34;);//1.获取字符串 byte[] bytes = fname.getBytes(&#34;ISO-8859-1&#34;); //2.将字符串打散成字节数组 fname = new String(bytes,&#34;UTF-8&#34;); //3.将字节数组按照设定的编码重新组装成字符串 post请求方式：
+request.setCharacterEncoding(&#34;UTF-8&#34;); //在获取字符串之前 tomcat8开始，设置编码，只需要针对post方式
+request.setCharacterEncoding(&#34;UTF-8&#34;); 注意： 需要注意的是，设置编码(post)这一句代码必须在所有的获取参数动作之前
+Servlet的继承关系#继承关系 javax.servlet.Servlet接口 &mdash;javax.servlet.GenericServlet抽象类 &mdash;&mdash;javax.servlet.http.HttpServlet抽象子类
+相关方法 (重点查看的是服务方法service() )
+javax.servlet.**Servlet **接口：
+public interface Servlet { //初始化方法 void init(ServletConfig var1) throws ServletException; ServletConfig getServletConfig(); //服务方法 void service(ServletRequest var1, ServletResponse var2) throws ServletException, IOException; String getServletInfo(); //销毁方法 void destroy(); } javax." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zyu0211.github.io/java/javaweb/" /><meta property="article:section" content="java" />
+
+
+
+<title>JavaWeb入门 | ZYU BOOk</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/book.min.c58292d36b18b675680ab9baea2029204537b839ea72f258746ec0f32ce8d6c8.css" integrity="sha256-xYKS02sYtnVoCrm66iApIEU3uDnqcvJYdG7A8yzo1sg=" crossorigin="anonymous">
+  <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><img src="/logo.png" alt="Logo" /><span>ZYU BOOk</span>
+  </a>
+</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-518f725d76ef42edca45fe01865b4d20" class="toggle" checked />
+    <label for="section-518f725d76ef42edca45fe01865b4d20" class="flex justify-between">
+      <a role="button" class="">java基础</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/java/javaSE/" class="">javaSE</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/java/javaweb/" class="active">JavaWeb入门</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-b56012d9aac7f30810a4fbc6efbe2e04" class="toggle"  />
+    <label for="section-b56012d9aac7f30810a4fbc6efbe2e04" class="flex justify-between">
+      <a role="button" class="">MySQL数据库</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/mysql/JDBC/" class="">JDBC核心技术</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/mysql/MySQL/" class="">MySQL基础篇</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/mysql/MySQL%E9%AB%98%E7%BA%A7/" class="">MySQL高级特性篇</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-589a8cf018b2ebf2ce7f3a363aab47f2" class="toggle"  />
+    <label for="section-589a8cf018b2ebf2ce7f3a363aab47f2" class="flex justify-between">
+      <a role="button" class="">java虚拟机</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/jvm/JVM-Memory_GC/" class="">JVM内存与垃圾回收</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/jvm/JVM-Bytecode_ClassLoading/" class="">JVM字节码与类的加载</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/jvm/JVM-Monitoring_Tuning/" class="">JVM性能监控与调优</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-6be3a103036efc21a988ae839ac63e32" class="toggle"  />
+    <label for="section-6be3a103036efc21a988ae839ac63e32" class="flex justify-between">
+      <a role="button" class="">Spring框架</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/spring/SSM/" class="">SSM三件套</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/spring/SpringBoot2/" class="">Spring Boot</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/spring/SpringCloud/" class="">Spring Cloud</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-cb147f28999e2af77c3c46e5203c4ebe" class="toggle"  />
+    <label for="section-cb147f28999e2af77c3c46e5203c4ebe" class="flex justify-between">
+      <a role="button" class="">中间件</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/%E4%B8%AD%E9%97%B4%E4%BB%B6/MyBatis-Plus/" class="">MyBatis-Plus</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/%E4%B8%AD%E9%97%B4%E4%BB%B6/RabbitMQ/" class="">RabbitMQ</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href=""  target="_blank" rel="noopener">
+        &gt;
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://github.com/zyu0211/zyu0211.github.io"  target="_blank" rel="noopener">
+        Github
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://gitee.com/zyu0211/"  target="_blank" rel="noopener">
+        Gitee
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://themes.gohugo.io/"  target="_blank" rel="noopener">
+        Hugo Themes
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>JavaWeb入门</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#一基础知识">一、基础知识</a>
+          <ul>
+            <li><a href="#常见异常">常见异常</a></li>
+            <li><a href="#tomcat服务器">Tomcat服务器</a></li>
+            <li><a href="#编码设置">编码设置</a></li>
+            <li><a href="#servlet的继承关系">Servlet的继承关系</a></li>
+            <li><a href="#servlet的生命周期">Servlet的生命周期</a></li>
+            <li><a href="#http协议">Http协议</a></li>
+            <li><a href="#session会话">Session会话</a></li>
+            <li><a href="#服务器内部转发以及客户端重定向">服务器内部转发以及客户端重定向</a></li>
+            <li><a href="#thymeleaf---视图模板技术">Thymeleaf - 视图模板技术</a></li>
+            <li><a href="#保存作用域">保存作用域</a></li>
+            <li><a href="#路径问题">路径问题</a></li>
+          </ul>
+        </li>
+        <li><a href="#二mvc基础">二、MVC基础</a>
+          <ul>
+            <li><a href="#review">review</a></li>
+            <li><a href="#servlet的初始化方法">Servlet的初始化方法</a></li>
+            <li><a href="#什么是业务层">什么是业务层</a></li>
+            <li><a href="#ioc">IOC</a></li>
+            <li><a href="#过滤器filter">过滤器Filter</a></li>
+            <li><a href="#事务管理">事务管理</a></li>
+            <li><a href="#监听器listener">监听器Listener</a></li>
+            <li><a href="#cookie">Cookie</a></li>
+            <li><a href="#kaptcha">Kaptcha</a></li>
+            <li><a href="#js-exp">JS-Exp</a></li>
+            <li><a href="#ajax">Ajax</a></li>
+            <li><a href="#vue">Vue</a></li>
+            <li><a href="#axios">Axios</a></li>
+            <li><a href="#json">JSON</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><blockquote>
+<p>
+  <a href="http://heavy_code_industry.gitee.io/code_heavy_industry/pro001-javaweb/">笔记链接：http://heavy_code_industry.gitee.io/code_heavy_industry/pro001-javaweb/</a></p>
+</blockquote>
+<h2 id="一基础知识">
+  一、基础知识
+  <a class="anchor" href="#%e4%b8%80%e5%9f%ba%e7%a1%80%e7%9f%a5%e8%af%86">#</a>
+</h2>
+<h3 id="常见异常">
+  常见异常
+  <a class="anchor" href="#%e5%b8%b8%e8%a7%81%e5%bc%82%e5%b8%b8">#</a>
+</h3>
+<ul>
+<li>200 : 正常响应</li>
+<li>404 : 找不到资源</li>
+<li>405 : 请求方式不支持</li>
+<li>500 : 服务器内部错误</li>
+</ul>
+<h3 id="tomcat服务器">
+  Tomcat服务器
+  <a class="anchor" href="#tomcat%e6%9c%8d%e5%8a%a1%e5%99%a8">#</a>
+</h3>
+<p>
+  <img src="/imgs/javaweb.assets/image-20220716115754559.png" alt="image-20220716115754559" /></p>
+<hr>
+<p>
+  <img src="imgs/javaweb.assets/image-20220716115830752-16690387055351.png" alt="image-20220716115830752" /></p>
+<h3 id="编码设置">
+  编码设置
+  <a class="anchor" href="#%e7%bc%96%e7%a0%81%e8%ae%be%e7%bd%ae">#</a>
+</h3>
+<ul>
+<li>
+<p>tomcat8之前，设置编码：</p>
+<ul>
+<li>
+<p>get请求方式：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">//get方式目前不需要设置编码（基于tomcat8）
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">//如果是get请求发送的中文数据，转码稍微有点麻烦（tomcat8之前）
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>String fname <span style="color:#f92672">=</span> request<span style="color:#f92672">.</span><span style="color:#a6e22e">getParameter</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;fname&#34;</span><span style="color:#f92672">);</span><span style="color:#75715e">//1.获取字符串
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">byte</span><span style="color:#f92672">[]</span> bytes <span style="color:#f92672">=</span> fname<span style="color:#f92672">.</span><span style="color:#a6e22e">getBytes</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;ISO-8859-1&#34;</span><span style="color:#f92672">);</span> <span style="color:#75715e">//2.将字符串打散成字节数组
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>fname <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> String<span style="color:#f92672">(</span>bytes<span style="color:#f92672">,</span><span style="color:#e6db74">&#34;UTF-8&#34;</span><span style="color:#f92672">);</span>           <span style="color:#75715e">//3.将字节数组按照设定的编码重新组装成字符串
+</span></span></span></code></pre></div></li>
+<li>
+<p>post请求方式：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>request<span style="color:#f92672">.</span><span style="color:#a6e22e">setCharacterEncoding</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;UTF-8&#34;</span><span style="color:#f92672">);</span> <span style="color:#75715e">//在获取字符串之前
+</span></span></span></code></pre></div></li>
+</ul>
+</li>
+<li>
+<p>tomcat8开始，设置编码，只需要针对post方式</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span> request<span style="color:#f92672">.</span><span style="color:#a6e22e">setCharacterEncoding</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;UTF-8&#34;</span><span style="color:#f92672">);</span>
+</span></span></code></pre></div></li>
+<li>
+<p>注意： 需要注意的是，设置编码(post)这一句代码必须在所有的获取参数动作之前</p>
+</li>
+</ul>
+<h3 id="servlet的继承关系">
+  Servlet的继承关系
+  <a class="anchor" href="#servlet%e7%9a%84%e7%bb%a7%e6%89%bf%e5%85%b3%e7%b3%bb">#</a>
+</h3>
+<ul>
+<li>
+<p>继承关系
+javax.servlet.<strong>Servlet</strong>接口
+&mdash;javax.servlet.<strong>GenericServlet</strong>抽象类
+&mdash;&mdash;javax.servlet.http.<strong>HttpServlet</strong>抽象子类</p>
+</li>
+<li>
+<p>相关方法 (重点查看的是服务方法service() )</p>
+<ul>
+<li>
+<p>javax.servlet.**Servlet **接口：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-JAVA" data-lang="JAVA"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Servlet</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//初始化方法
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">init</span><span style="color:#f92672">(</span>ServletConfig var1<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> ServletException<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    ServletConfig <span style="color:#a6e22e">getServletConfig</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">//服务方法
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">service</span><span style="color:#f92672">(</span>ServletRequest var1<span style="color:#f92672">,</span> ServletResponse var2<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> ServletException<span style="color:#f92672">,</span> IOException<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    String <span style="color:#a6e22e">getServletInfo</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">//销毁方法
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">destroy</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div></li>
+<li>
+<p>javax.servlet.<strong>GenericServlet</strong> 抽象类：</p>
+<ul>
+<li>void service(request,response) - 仍然是抽象的</li>
+</ul>
+</li>
+<li>
+<p>javax.servlet.http.<strong>HttpServlet</strong> 抽象子类：</p>
+<ul>
+<li>
+<p>void service(request,response) - 不是抽象的</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">//首先获取请求方式
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>String method <span style="color:#f92672">=</span> req<span style="color:#f92672">.</span><span style="color:#a6e22e">getMethod</span><span style="color:#f92672">();</span> 
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//根据请求方式不同，使用if判断，决定去调用不同的doXxx方法
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>method<span style="color:#f92672">.</span><span style="color:#a6e22e">equals</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;GET&#34;</span><span style="color:#f92672">))</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">doGet</span><span style="color:#f92672">(</span>req<span style="color:#f92672">,</span>resp<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span> <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>method<span style="color:#f92672">.</span><span style="color:#a6e22e">equals</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;HEAD&#34;</span><span style="color:#f92672">))</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">doHead</span><span style="color:#f92672">(</span>req<span style="color:#f92672">,</span> resp<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span> <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>method<span style="color:#f92672">.</span><span style="color:#a6e22e">equals</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;POST&#34;</span><span style="color:#f92672">))</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">doPost</span><span style="color:#f92672">(</span>req<span style="color:#f92672">,</span> resp<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span> <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>method<span style="color:#f92672">.</span><span style="color:#a6e22e">equals</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;PUT&#34;</span><span style="color:#f92672">))</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">doPut</span><span style="color:#f92672">(</span>req<span style="color:#f92672">,</span> resp<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//......
+</span></span></span></code></pre></div></li>
+<li>
+<p>在HttpServlet这个抽象类中，doXxx方法都差不多:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">doGet</span><span style="color:#f92672">(</span>HttpServletRequest req<span style="color:#f92672">,</span> HttpServletResponse resp<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> ServletException<span style="color:#f92672">,</span> IOException <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>	String protocol <span style="color:#f92672">=</span> req<span style="color:#f92672">.</span><span style="color:#a6e22e">getProtocol</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>	String msg <span style="color:#f92672">=</span> lStrings<span style="color:#f92672">.</span><span style="color:#a6e22e">getString</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;http.method_get_not_supported&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>protocol<span style="color:#f92672">.</span><span style="color:#a6e22e">endsWith</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;1.1&#34;</span><span style="color:#f92672">))</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>		resp<span style="color:#f92672">.</span><span style="color:#a6e22e">sendError</span><span style="color:#f92672">(</span>405<span style="color:#f92672">,</span> msg<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">}</span> <span style="color:#66d9ef">else</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>		resp<span style="color:#f92672">.</span><span style="color:#a6e22e">sendError</span><span style="color:#f92672">(</span>400<span style="color:#f92672">,</span> msg<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>小结：</p>
+<ul>
+<li>继承关系：Servlet &lt;&ndash;  GenericServlet &lt;&ndash; HttpServlet</li>
+<li>Servlet中的核心方法： init() , service() , destroy()</li>
+<li>服务方法： 当有请求过来时，service方法会自动响应（其实是tomcat容器调用的）；在HttpServlet中我们会去分析请求的方式：到底是get、post、head还是delete等等，然后再决定调用的是哪个do开头的方法。</li>
+<li>在HttpServlet中这些doXxx方法默认都是405的实现风格——要我们子类去实现对应的方法，否则默认会报405错误。</li>
+<li>因此，我们在新建Servlet时，我们才会去考虑请求方法，从而决定重写哪个do方法。</li>
+</ul>
+</li>
+</ul>
+<h3 id="servlet的生命周期">
+  Servlet的生命周期
+  <a class="anchor" href="#servlet%e7%9a%84%e7%94%9f%e5%91%bd%e5%91%a8%e6%9c%9f">#</a>
+</h3>
+<ul>
+<li>
+<p>生命周期：从出生到死亡的过程就是生命周期。对应Servlet中的三个方法：init()，service()，destroy()</p>
+</li>
+<li>
+<p>默认情况下：</p>
+<ul>
+<li>第一次接收请求时，这个Servlet会进行实例化 (调用构造方法 )、初始化 (调用init() )、然后服务 (调用service() )</li>
+<li>从第二次请求开始，每一次都服务，只调用service()</li>
+<li>当容器关闭时，其中的所有的servlet实例会被销毁，调用销毁方法destroy()</li>
+</ul>
+</li>
+<li>
+<p>Servlet实例tomcat只会创建一个，所有的请求都是这个实例去响应。</p>
+<ul>
+<li>默认情况下，第一次请求时，tomcat 才会去实例化，初始化，然后再服务。
+<ul>
+<li>这样的好处是什么？ 提高系统的启动速度。</li>
+<li>这样的缺点是什么？ 第一次请求时，耗时较长。</li>
+</ul>
+</li>
+<li>因此得出结论：如果需要提高系统的启动速度，默认情况即可；如果需要提高响应速度，可以设置Servlet的初始化时机。</li>
+</ul>
+</li>
+<li>
+<p>Servlet的初始化时机：</p>
+<ul>
+<li>
+<p>默认是第一次接收请求时，实例化，初始化</p>
+</li>
+<li>
+<p>我们可以通过<load-on-startup>来设置servlet启动的先后顺序,数字越小，启动越靠前，最小值0。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#75715e">&lt;!-- 在web.xml文件中 --&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;servlet&gt;</span>
+</span></span><span style="display:flex;"><span> <span style="color:#f92672">&lt;servlet-name&gt;</span>name<span style="color:#f92672">&lt;/servlet-name&gt;</span>
+</span></span><span style="display:flex;"><span> <span style="color:#f92672">&lt;servlet-class&gt;</span>全类名<span style="color:#f92672">&lt;/servlet-class&gt;</span>
+</span></span><span style="display:flex;"><span> <span style="color:#f92672">&lt;load-on-startup&gt;</span>1<span style="color:#f92672">&lt;/load-on-startup&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/servlet&gt;</span>
+</span></span></code></pre></div></li>
+</ul>
+</li>
+<li>
+<p>Servlet在容器中是：<strong>单例</strong>的、<strong>线程不安全</strong>的</p>
+<ul>
+<li>单例：所有的请求都是同一个实例去响应。</li>
+<li>线程不安全：一个线程需要根据这个实例中的某个成员变量值去做逻辑判断。但是在中间某个时机，另一个线程改变了这个成员变量的值，从而导致第一个线程的执行路径发生了变化。</li>
+<li>我们已经知道了servlet是线程不安全的，给我们的启发是： 尽量的不要在servlet中定义成员变量。如果不得不定义成员变量，那么不要去：①不要去修改成员变量的值 ②不要去根据成员变量的值做一些逻辑判断。</li>
+</ul>
+</li>
+</ul>
+<h3 id="http协议">
+  Http协议
+  <a class="anchor" href="#http%e5%8d%8f%e8%ae%ae">#</a>
+</h3>
+<ul>
+<li>Http协议称之为<strong>超文本传输协议</strong>，是无状态的，Http请求响应包含两个部分：<strong>请求</strong>和<strong>响应</strong>。
+<ul>
+<li>请求：请求包含三个部分：请求行、请求消息头、请求主体
+<ul>
+<li>请求行包含是三个信息：请求的方式 、请求的URL、请求的协议（一般都是HTTP1.1）</li>
+<li>请求消息头中包含了很多客户端需要告诉服务器的信息，比如：我的浏览器型号、版本、我能接收的内容的类型、我给你发的内容的类型、内容的长度等等</li>
+<li>请求体，三种情况
+get方式，没有请求体，但是有一个queryString
+post方式，有请求体，form data
+json格式，有请求体，request payload</li>
+</ul>
+</li>
+<li>响应：响应也包含三本：响应行、响应头 、响应体
+<ul>
+<li>响应行包含三个信息：协议 、响应状态码(200)、响应状态(ok)</li>
+<li>响应头：包含了服务器的信息；服务器发送给浏览器的信息（内容的媒体类型、编码、内容长度等）</li>
+<li>响应体：响应的实际内容（比如请求add.html页面时，响应的内容就是<html><head><body>&lt;form&hellip;.）</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="session会话">
+  Session会话
+  <a class="anchor" href="#session%e4%bc%9a%e8%af%9d">#</a>
+</h3>
+<ul>
+<li>
+<p>HTTP 无状态 ：服务器无法判断这两次请求是同一个客户端发过来的，还是不同的客户端发过来的</p>
+<ul>
+<li>无状态带来的现实问题：第一次请求是添加商品到购物车，第二次请求是结账；如果这两次请求服务器无法区分是同一个用户的，那么就会导致混乱</li>
+<li>通过会话跟踪技术来解决无状态的问题。</li>
+</ul>
+</li>
+<li>
+<p>会话跟踪技术</p>
+<ul>
+<li>
+<p>客户端第一次发请求给服务器，服务器获取session，获取不到，则创建新的，然后响应给客户端；下次客户端给服务器发请求时，会把sessionID带给服务器，那么服务器就能获取到了，那么服务器就判断这一次请求和上次某次请求是同一个客户端，从而能够区分开客户端</p>
+</li>
+<li>
+<p>常用的API：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#75715e">//获取Session对象：HttpSession session = request.getSession();
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>request<span style="color:#f92672">.</span><span style="color:#a6e22e">getSession</span><span style="color:#f92672">()</span>      <span style="color:#75715e">//获取当前的会话，没有则创建一个新的会话
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>request<span style="color:#f92672">.</span><span style="color:#a6e22e">getSession</span><span style="color:#f92672">(</span><span style="color:#66d9ef">true</span><span style="color:#f92672">)</span>  <span style="color:#75715e">//效果和不带参数相同
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>request<span style="color:#f92672">.</span><span style="color:#a6e22e">getSession</span><span style="color:#f92672">(</span><span style="color:#66d9ef">false</span><span style="color:#f92672">)</span> <span style="color:#75715e">//获取当前会话，没有则返回null，不会创建新的
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">//Session实例方法
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>session<span style="color:#f92672">.</span><span style="color:#a6e22e">getId</span><span style="color:#f92672">()</span>                  <span style="color:#75715e">//获取sessionID
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>session<span style="color:#f92672">.</span><span style="color:#a6e22e">isNew</span><span style="color:#f92672">()</span>                  <span style="color:#75715e">//判断当前session是否是新的
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>session<span style="color:#f92672">.</span><span style="color:#a6e22e">getMaxInactiveInterval</span><span style="color:#f92672">()</span> <span style="color:#75715e">//获取session的非激活间隔时长，默认1800秒
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>session<span style="color:#f92672">.</span><span style="color:#a6e22e">setMaxInactiveInterval</span><span style="color:#f92672">()</span> <span style="color:#75715e">//修改session的非激活间隔时长
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>session<span style="color:#f92672">.</span><span style="color:#a6e22e">invalidate</span><span style="color:#f92672">()</span>             <span style="color:#75715e">//强制性让会话立即失效
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">//....
+</span></span></span></code></pre></div></li>
+</ul>
+</li>
+<li>
+<p>session保存作用域</p>
+<ul>
+<li>
+<p>session保存作用域是和具体的某一个session对应的</p>
+</li>
+<li>
+<p>常用的API：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> session<span style="color:#f92672">.</span><span style="color:#a6e22e">setAttribute</span><span style="color:#f92672">(</span>k<span style="color:#f92672">,</span>v<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>Object session<span style="color:#f92672">.</span><span style="color:#a6e22e">getAttribute</span><span style="color:#f92672">(</span>k<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> session<span style="color:#f92672">.</span><span style="color:#a6e22e">removeAttribute</span><span style="color:#f92672">(</span>k<span style="color:#f92672">)</span>
+</span></span></code></pre></div></li>
+</ul>
+</li>
+</ul>
+<h3 id="服务器内部转发以及客户端重定向">
+  服务器内部转发以及客户端重定向
+  <a class="anchor" href="#%e6%9c%8d%e5%8a%a1%e5%99%a8%e5%86%85%e9%83%a8%e8%bd%ac%e5%8f%91%e4%bb%a5%e5%8f%8a%e5%ae%a2%e6%88%b7%e7%ab%af%e9%87%8d%e5%ae%9a%e5%90%91">#</a>
+</h3>
+<ul>
+<li>
+<p>服务器内部转发： <code>request.getRequestDispatcher(&quot;index.html&quot;).forward(request,response);</code></p>
+<pre><code>- 一次请求响应的过程，对于客户端而言，内部经过了多少次转发，客户端是不知道的
+</code></pre>
+<ul>
+<li>地址栏没有变化</li>
+</ul>
+</li>
+<li>
+<p>客户端重定向：response.sendRedirect(&ldquo;index.html&rdquo;);`</p>
+<pre><code>- 两次请求响应的过程。客户端肯定知道请求URL有变化
+
+- 地址栏有变化
+</code></pre>
+</li>
+</ul>
+<h3 id="thymeleaf---视图模板技术">
+  Thymeleaf - 视图模板技术
+  <a class="anchor" href="#thymeleaf---%e8%a7%86%e5%9b%be%e6%a8%a1%e6%9d%bf%e6%8a%80%e6%9c%af">#</a>
+</h3>
+<ul>
+<li>
+<p>添加thymeleaf的jar包</p>
+</li>
+<li>
+<p>新建一个ViewBaseServlet类，继承于HttpServlet</p>
+</li>
+<li>
+<p>在web.xml文件中添加配置</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#75715e">&lt;!--  配置前缀 view-prefix
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">      配置后缀 view-suffix --&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;context-param&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;param-name&gt;</span>view-prefix<span style="color:#f92672">&lt;/param-name&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;param-value&gt;</span>/<span style="color:#f92672">&lt;/param-value&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;/context-param&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;context-param&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;param-name&gt;</span>view-suffix<span style="color:#f92672">&lt;/param-name&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;param-value&gt;</span>.html<span style="color:#f92672">&lt;/param-value&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/context-param&gt;</span>
+</span></span></code></pre></div></li>
+<li>
+<p>使得我们的Servlet继承ViewBaseServlet</p>
+</li>
+<li>
+<p>根据<strong>逻辑视图名称</strong>得到<strong>物理视图名称</strong></p>
+<ul>
+<li>若此处的视图名称是 index，那么thymeleaf会将这个 逻辑视图名称对应到物理视图名称上去
+<ul>
+<li>逻辑视图名称：index</li>
+<li>物理视图名称： view-prefix + 逻辑视图名称 + view-suffix</li>
+</ul>
+</li>
+<li>所以真实的视图名称是：/index.html</li>
+</ul>
+</li>
+<li>
+<p>在我们的Servlet类中调用：<code>super.processTemplate(&quot;index&quot;,request,response);</code></p>
+</li>
+<li>
+<p>常见thymeleaf的标签</p>
+<ul>
+<li><code>th:if</code> ，<code>th:unless</code>，<code>th:each</code>，<code>th:text</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="保存作用域">
+  保存作用域
+  <a class="anchor" href="#%e4%bf%9d%e5%ad%98%e4%bd%9c%e7%94%a8%e5%9f%9f">#</a>
+</h3>
+<ul>
+<li>
+<p>原始情况下，保存作用域我们可以认为有四个：</p>
+<ul>
+<li>
+<p>page：页面级别，现在几乎不用</p>
+</li>
+<li>
+<p>request：一次请求响应范围</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>request<span style="color:#f92672">.</span><span style="color:#a6e22e">setAttribute</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;key&#34;</span><span style="color:#f92672">,</span>value<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>request<span style="color:#f92672">.</span><span style="color:#a6e22e">getAttribute</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;key&#34;</span><span style="color:#f92672">);</span>
+</span></span></code></pre></div></li>
+<li>
+<p>session：一次会话范围</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>session<span style="color:#f92672">.</span><span style="color:#a6e22e">setAttribute</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;key&#34;</span><span style="color:#f92672">,</span>value<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>session<span style="color:#f92672">.</span><span style="color:#a6e22e">getAttribute</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;key&#34;</span><span style="color:#f92672">);</span>
+</span></span></code></pre></div></li>
+<li>
+<p>application：整个应用程序范围</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>ServletContext appication <span style="color:#f92672">=</span> request<span style="color:#f92672">.</span><span style="color:#a6e22e">getServletContext</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>appication<span style="color:#f92672">.</span><span style="color:#a6e22e">setAttribute</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;key&#34;</span><span style="color:#f92672">,</span>value<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>appication<span style="color:#f92672">.</span><span style="color:#a6e22e">getAttribute</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;key&#34;</span><span style="color:#f92672">);</span>
+</span></span></code></pre></div></li>
+</ul>
+</li>
+</ul>
+<h3 id="路径问题">
+  路径问题
+  <a class="anchor" href="#%e8%b7%af%e5%be%84%e9%97%ae%e9%a2%98">#</a>
+</h3>
+<ul>
+<li>相对路径：基于当前文件所在路径，使用<code>../</code>表示上一级文件路径</li>
+<li>绝对路径：<code>http&quot;//localhost:8080/project/...</code></li>
+<li>几种特殊用法：
+<ul>
+<li>在html文件中，<head>标签中：&lt;base href=&ldquo;http&rdquo;//localhost:8080/project&quot; /&gt; 表示当前文件中所有路径都是基于此路径的。</li>
+<li>在Thymeleaf中，<link th:href="@{/css/log.css}"> 表示相当于绝对路径。</li>
+</ul>
+</li>
+</ul>
+<h2 id="二mvc基础">
+  二、MVC基础
+  <a class="anchor" href="#%e4%ba%8cmvc%e5%9f%ba%e7%a1%80">#</a>
+</h2>
+<h3 id="review">
+  review
+  <a class="anchor" href="#review">#</a>
+</h3>
+<ul>
+<li>
+<p>最初的做法是：
+<img src="/imgs/javaweb.assets/image-20220716120123662.png" alt="image-20220716120123662" style="zoom:80%;" /></p>
+<p>一个请求对应一个Servlet，这样存在的问题是servlet太多了。</p>
+</li>
+<li>
+<p>改进一：
+<img src="/imgs/javaweb.assets/image-20220716120147669.png" alt="image-20220716120147669" style="zoom:80%;" /></p>
+<p>把一系列的请求合并为一个Servlet，即<code>IndexServlet/AddServlet/EditServlet/DelServlet/UpdateServlet</code>合并成一个<code>FruitServlet</code>，成为其中的方法，通过一个operate的值来决定调用FruitServlet中的哪一个方法，使用的是switch-case。</p>
+</li>
+<li>
+<p>改进二：在上一个版本中，Servlet中充斥着大量的switch-case，试想一下，随着项目的业务规模扩大，会有很多的Servlet，也就意味着会有很多的switch-case，这是一种代码冗余。因此，我们在servlet中使用了<strong>反射技术</strong>，我们规定operate的值和方法名一致，那么接收到operate的值是什么就表明我们需要调用对应的方法进行响应，如果找不到对应的方法，则抛异常。</p>
+</li>
+<li>
+<p>改进三：
+<img src="/imgs/javaweb.assets/image-20220716120036439.png" alt="image-20220716120036439" style="zoom:80%;" /></p>
+<p>在上一个版本中我们使用了反射技术，但是其实还是存在一定的问题：每一个servlet中都有类似的反射技术的代码。因此继续抽取，设计了中央控制器类：<strong>DispatcherServlet</strong>。</p>
+<ul>
+<li>
+<p>DispatcherServlet这个类的工作分为两大部分：</p>
+<ul>
+<li>
+<p>根据url定位到能够处理这个请求的controller组件：</p>
+<ul>
+<li>
+<p>从url中提取servletPath : /fruit.do -&gt; fruit</p>
+</li>
+<li>
+<p>根据fruit找到对应的组件:FruitController ， 这个对应的依据我们存储在<strong>applicationContext.xml</strong>中
+<code>&lt;bean id=&quot;fruit&quot; class=&quot;com.atguigu.fruit.controllers.FruitController/&gt;</code>
+通过<strong>DOM技术</strong>我们去解析XML文件，在中央控制器中形成一个<strong>beanMap容器</strong>，用来存放所有的Controller组件</p>
+</li>
+<li>
+<p>根据获取到的operate的值定位到我们FruitController中需要调用的方法</p>
+</li>
+</ul>
+</li>
+<li>
+<p>调用Controller组件中的方法：</p>
+<ul>
+<li>获取参数
+获取即将要调用的方法的参数签名信息: Parameter[] parameters = method.getParameters();
+通过parameter.getName()获取参数的名称；
+准备了Object[] parameterValues 这个数组用来存放对应参数的参数值；
+另外，我们需要考虑参数的类型问题，需要做类型转化的工作。通过parameter.getType()获取参数的类型。</li>
+<li>执行方法
+Object returnObj = method.invoke(controllerBean , parameterValues);</li>
+<li>视图处理
+String returnStr = (String)returnObj;
+if(returnStr.startWith(&ldquo;redirect:&rdquo;)){
+&hellip;.
+}else if&hellip;..</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="servlet的初始化方法">
+  Servlet的初始化方法
+  <a class="anchor" href="#servlet%e7%9a%84%e5%88%9d%e5%a7%8b%e5%8c%96%e6%96%b9%e6%b3%95">#</a>
+</h3>
+<ul>
+<li>
+<p>Servlet生命周期：实例化、初始化、服务、销毁</p>
+</li>
+<li>
+<p>Servlet中的初始化方法有两个：<strong>init()</strong> , <strong>init(config)</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">//其中带参数的方法代码如下：
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">init</span><span style="color:#f92672">(</span>ServletConfig config<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> ServletException <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">config</span> <span style="color:#f92672">=</span> config <span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>	init<span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//另外一个无参的init方法如下：
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">init</span><span style="color:#f92672">()</span> <span style="color:#66d9ef">throws</span> ServletException<span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//如果我们想要在Servlet初始化时做一些准备工作，那么我们可以重写init方法
+</span></span></span></code></pre></div></li>
+<li>
+<p>我们可以通过如下步骤去获取初始化设置的数据</p>
+<pre><code> - 获取config对象：`ServletConfig config = getServletConfig();`
+ - 获取初始化参数值： `config.getInitParameter(key);`
+</code></pre>
+</li>
+<li>
+<p>在web.xml文件中配置Servlet</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#f92672">&lt;servlet&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;servlet-name&gt;</span>Demo01Servlet<span style="color:#f92672">&lt;/servlet-name&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;servlet-class&gt;</span>com.atguigu.servlet.Demo01Servlet<span style="color:#f92672">&lt;/servlet-class&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;init-param&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;param-name&gt;</span>hello<span style="color:#f92672">&lt;/param-name&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;param-value&gt;</span>world<span style="color:#f92672">&lt;/param-value&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;/init-param&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;init-param&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;param-name&gt;</span>uname<span style="color:#f92672">&lt;/param-name&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;param-value&gt;</span>jim<span style="color:#f92672">&lt;/param-value&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;/init-param&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/servlet&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;servlet-mapping&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;servlet-name&gt;</span>Demo01Servlet<span style="color:#f92672">&lt;/servlet-name&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;url-pattern&gt;</span>/demo01<span style="color:#f92672">&lt;/url-pattern&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/servlet-mapping&gt;</span>
+</span></span></code></pre></div></li>
+<li>
+<p>通过注解的方式进行配置：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@WebServlet</span><span style="color:#f92672">(</span>urlPatterns <span style="color:#f92672">=</span> <span style="color:#f92672">{</span><span style="color:#e6db74">&#34;/demo01&#34;</span><span style="color:#f92672">}</span> <span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span>initParams <span style="color:#f92672">=</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@WebInitParam</span><span style="color:#f92672">(</span>name<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;hello&#34;</span><span style="color:#f92672">,</span>value<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;world&#34;</span><span style="color:#f92672">),</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@WebInitParam</span><span style="color:#f92672">(</span>name<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;uname&#34;</span><span style="color:#f92672">,</span>value<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;jim&#34;</span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">})</span>
+</span></span></code></pre></div></li>
+<li>
+<p>Servlet中的<strong>ServletContext</strong>和<context-param></p>
+<ul>
+<li>
+<p>获取ServletContext，有很多方法</p>
+<ul>
+<li>
+<p>在初始化方法中： <code>ServletContxt servletContext = getServletContext();</code></p>
+</li>
+<li>
+<p>在服务方法中通过request对象获取：<code>request.getServletContext();</code></p>
+</li>
+<li>
+<p>在服务方法中通过session获取：<code>session.getServletContext();</code></p>
+</li>
+</ul>
+</li>
+<li>
+<p>获取初始化值：
+<code>servletContext.getInitParameter();</code></p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="什么是业务层">
+  什么是业务层
+  <a class="anchor" href="#%e4%bb%80%e4%b9%88%e6%98%af%e4%b8%9a%e5%8a%a1%e5%b1%82">#</a>
+</h3>
+<ul>
+<li>
+<p>MVC : Model（模型）、View（视图）、Controller（控制器）</p>
+<ul>
+<li>
+<p>视图层：用于做数据展示以及和用户交互的一个界面</p>
+</li>
+<li>
+<p>控制层：能够接受客户端的请求，具体的业务功能还是需要借助于模型组件来完成</p>
+</li>
+<li>
+<p>模型层：模型分为很多种：有比较简单的pojo/vo(value object)，有业务模型组件，有数据访问层组件</p>
+  <img src="/imgs/javaweb.assets/image-20220716120400204.png" alt="image-20220716120400204" style="zoom:80%;" />
+<blockquote>
+<ul>
+<li>
+<p>pojo/vo : 值对象</p>
+</li>
+<li>
+<p>DAO ： 数据访问对象</p>
+</li>
+<li>
+<p>BO ： 业务对象</p>
+</li>
+<li>
+<p>区分业务对象和数据访问对象：</p>
+<ul>
+<li>
+<p>DAO中的方法都是单精度方法或者称之为细粒度方法。什么叫单精度？一个方法只考虑一个操作，比如添加，那是insert操作、查询那就是select操作&hellip;.</p>
+</li>
+<li>
+<p>BO中的方法属于业务方法，也实际的业务是比较复杂的，因此业务方法的粒度是比较粗的。注册这个功能属于业务功能，也就是说注册这个方法属于业务方法。那么这个业务方法中包含了多个DAO方法。也就是说注册这个业务功能需要通过多个DAO方法的组合调用，从而完成注册功能的开发。
+注册：</p>
+<ol>
+<li>检查用户名是否已经被注册 - DAO中的select操作</li>
+<li>用户表新增一条新用户记录 - DAO中的insert操作</li>
+<li>向用户积分表新增一条记录（新用户默认初始化积分100分） - DAO中的insert操作</li>
+<li>系统消息表新增一条记录（某某某新用户注册了，需要根据通讯录信息向他的联系人推送消息） - DAO中的insert操作</li>
+<li>向系统日志表新增一条记录（某用户在某IP在某年某月某日某时某分某秒某毫秒注册） - DAO中的insert操作
+&hellip;</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>
+<p>在库存系统中添加业务层组件</p>
+</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="ioc">
+  IOC
+  <a class="anchor" href="#ioc">#</a>
+</h3>
+<ul>
+<li>
+<p>耦合/依赖
+依赖指的是某某某离不开某某某
+在软件系统中，层与层之间是存在依赖的，我们也称之为耦合。
+我们系统架构或者是设计的一个原则是： <strong>高内聚低耦合</strong>。
+层内部的组成应该是高度聚合的，而层与层之间的关系应该是低耦合的，最理想的情况0耦合（就是没有耦合）。</p>
+</li>
+<li>
+<p>IOC - 控制反转 / DI - 依赖注入</p>
+<ul>
+<li>
+<p>控制反转：
+1) 之前在Servlet中，我们创建service对象 ， FruitService fruitService = new FruitServiceImpl();
+这句话如果出现在servlet中的某个方法内部，那么这个fruitService的作用域（生命周期）应该就是这个方法级别；
+如果这句话出现在servlet的类中，也就是说fruitService是一个成员变量，那么这个fruitService的作用域（生命周期）应该就是这个servlet实例级别
+2) 之后我们在applicationContext.xml中定义了这个fruitService。然后通过解析XML，产生fruitService实例，存放在beanMap中，这个beanMap在一个BeanFactory中。
+因此，我们转移（改变）了之前的service实例、dao实例等等他们的生命周期。控制权从程序员转移到BeanFactory。这个现象我们称之为控制反转</p>
+</li>
+<li>
+<p>依赖注入：</p>
+<ol>
+<li>
+<p>之前我们在控制层出现代码：FruitService fruitService = new FruitServiceImpl()；
+那么，控制层和service层存在耦合。</p>
+</li>
+<li>
+<p>之后，我们将代码修改成FruitService fruitService = null ;
+然后，在配置文件中配置:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#f92672">&lt;bean</span> <span style="color:#a6e22e">id=</span><span style="color:#e6db74">&#34;fruit&#34;</span> <span style="color:#a6e22e">class=</span><span style="color:#e6db74">&#34;FruitController&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#f92672">&lt;property</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;fruitService&#34;</span> <span style="color:#a6e22e">ref=</span><span style="color:#e6db74">&#34;fruitService&#34;</span><span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/bean&gt;</span>
+</span></span></code></pre></div></li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="过滤器filter">
+  过滤器Filter
+  <a class="anchor" href="#%e8%bf%87%e6%bb%a4%e5%99%a8filter">#</a>
+</h3>
+<ul>
+<li>
+<p>Filter也属于Servlet规范</p>
+</li>
+<li>
+<p>Filter开发步骤：新建类实现Filter接口，然后实现其中的三个方法：init(filterConfig)、doFilter(req,resp,filterChain)、destroy()</p>
+<ul>
+<li>请求拦截</li>
+<li>放行：filterChain.doFilter(req,resp);</li>
+<li>响应拦截</li>
+</ul>
+</li>
+<li>
+<p>配置Filter，可以用注解@WebFilter，也可以使用xml文件 <filter> <filter-mapping>；Filter在配置时，和servlet一样，也可以配置通配符，例如 @WebFilter(&quot;*.do&quot;)表示拦截所有以.do结尾的请求</p>
+</li>
+<li>
+<p>过滤器链<img src="/imgs/javaweb.assets/image-20220716120452588.png" alt="image-20220716120452588" style="zoom:67%;" /></p>
+<ul>
+<li>执行的顺序依次是： A B C demo03 C2 B2 A2</li>
+<li>如果采取的是注解的方式进行配置，那么过滤器链的拦截顺序是按照全类名的先后顺序排序的</li>
+<li>如果采取的是xml的方式进行配置，那么按照配置的先后顺序进行排序</li>
+</ul>
+</li>
+</ul>
+<h3 id="事务管理">
+  事务管理
+  <a class="anchor" href="#%e4%ba%8b%e5%8a%a1%e7%ae%a1%e7%90%86">#</a>
+</h3>
+<ul>
+<li>
+<p>涉及到的组件：</p>
+<ul>
+<li>OpenSessionInViewFilter
+  <img src="imgs/javaweb.assets/image-20220716120913535-16690388011225.png" alt="image-20220716120913535" /></li>
+<li>TransactionManager</li>
+<li>ThreadLocal</li>
+<li>ConnUtil</li>
+<li>BaseDAO</li>
+</ul>
+</li>
+<li>
+<p>ThreadLocal</p>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">//ThreadLocal称之为本地线程 。 我们可以通过set(obj)方法在当前线程上存储数据、通过get()方法在当前线程上获取数据
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">//set方法源码分析：
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">set</span><span style="color:#f92672">(</span>T value<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>	Thread t <span style="color:#f92672">=</span> Thread<span style="color:#f92672">.</span><span style="color:#a6e22e">currentThread</span><span style="color:#f92672">();</span> <span style="color:#75715e">//获取当前的线程
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	ThreadLocalMap map <span style="color:#f92672">=</span> getMap<span style="color:#f92672">(</span>t<span style="color:#f92672">);</span>    <span style="color:#75715e">//每一个线程都维护各自的一个容器（ThreadLocalMap）
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>map <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>		map<span style="color:#f92672">.</span><span style="color:#a6e22e">set</span><span style="color:#f92672">(</span><span style="color:#66d9ef">this</span><span style="color:#f92672">,</span> value<span style="color:#f92672">);</span>          <span style="color:#75715e">//这里的key对应的是ThreadLocal，因为我们的组件中需要传输（共享）的对象可能会有多个（不止Connection）
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>		createMap<span style="color:#f92672">(</span>t<span style="color:#f92672">,</span> value<span style="color:#f92672">);</span>           <span style="color:#75715e">//默认情况下map是没有初始化的，那么第一次往其中添加数据时，会去初始化
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span> <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//get方法源码分析：
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">public</span> T <span style="color:#a6e22e">get</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>	Thread t <span style="color:#f92672">=</span> Thread<span style="color:#f92672">.</span><span style="color:#a6e22e">currentThread</span><span style="color:#f92672">();</span> <span style="color:#75715e">//获取当前的线程
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	ThreadLocalMap map <span style="color:#f92672">=</span> getMap<span style="color:#f92672">(</span>t<span style="color:#f92672">);</span>    <span style="color:#75715e">//获取和这个线程（企业）相关的ThreadLocalMap（也就是工作纽带的集合）
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>map <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>		ThreadLocalMap<span style="color:#f92672">.</span><span style="color:#a6e22e">Entry</span> e <span style="color:#f92672">=</span> map<span style="color:#f92672">.</span><span style="color:#a6e22e">getEntry</span><span style="color:#f92672">(</span><span style="color:#66d9ef">this</span><span style="color:#f92672">);</span>  <span style="color:#75715e">//this指的是ThreadLocal对象，通过它才能知道是哪一个工作纽带
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		<span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>e <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">@SuppressWarnings</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;unchecked&#34;</span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>			T result <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>T<span style="color:#f92672">)</span>e<span style="color:#f92672">.</span><span style="color:#a6e22e">value</span><span style="color:#f92672">;</span>     <span style="color:#75715e">//entry.value就可以获取到工具箱了
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>			<span style="color:#66d9ef">return</span> result<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> setInitialValue<span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><h3 id="监听器listener">
+  监听器Listener
+  <a class="anchor" href="#%e7%9b%91%e5%90%ac%e5%99%a8listener">#</a>
+</h3>
+<ul>
+<li>
+<p>常见API</p>
+<ol>
+<li>ServletContextListener - 监听ServletContext对象的创建和销毁的过程</li>
+<li>HttpSessionListener - 监听HttpSession对象的创建和销毁的过程</li>
+<li>ServletRequestListener - 监听ServletRequest对象的创建和销毁的过程</li>
+<li>ServletContextAttributeListener - 监听ServletContext的保存作用域的改动(add,remove,replace)</li>
+<li>HttpSessionAttributeListener - 监听HttpSession的保存作用域的改动(add,remove,replace)ServletRequestAttributeListener - 监听</li>
+<li>ServletRequest的保存作用域的改动(add,remove,replace)</li>
+<li>HttpSessionBindingListener - 监听某个对象在Session域中的创建与移除</li>
+<li>HttpSessioActivationListener - 监听某个对象在Session域中的序列化和反序列化</li>
+</ol>
+</li>
+<li>
+<p>ServletContextListener的应用 - ContextLoaderListener</p>
+</li>
+</ul>
+<h3 id="cookie">
+  Cookie
+  <a class="anchor" href="#cookie">#</a>
+</h3>
+<ul>
+<li>创建Cookie</li>
+<li>向客户端发送Cookie（客户端保存Cookie）</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@Webservlet</span><span style="color:#f92672">(</span><span style="color:#960050;background-color:#1e0010">“</span><span style="color:#f92672">/</span>cookie<span style="color:#960050;background-color:#1e0010">”</span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CookieServlet</span> <span style="color:#66d9ef">extends</span> Httpservlet<span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">service</span> <span style="color:#f92672">(</span>req<span style="color:#f92672">,</span> res<span style="color:#f92672">){</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">//创建cookie对象
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        Cookie cookie <span style="color:#f92672">=</span><span style="color:#66d9ef">new</span> Cookie<span style="color:#f92672">(</span><span style="color:#960050;background-color:#1e0010">“</span>uname <span style="color:#960050;background-color:#1e0010">”</span><span style="color:#f92672">,</span> <span style="color:#960050;background-color:#1e0010">“</span>jim<span style="color:#960050;background-color:#1e0010">”</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">//将这个cookie对象保存到浏览器端
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        res<span style="color:#f92672">.</span><span style="color:#a6e22e">addCookie</span><span style="color:#f92672">(</span>cookie<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><ul>
+<li>Cookie的应用：设置免秘密登陆10天——<code>cookie.setMaxAde(60*60*24*10);</code></li>
+</ul>
+<h3 id="kaptcha">
+  Kaptcha
+  <a class="anchor" href="#kaptcha">#</a>
+</h3>
+<ul>
+<li>
+<p>为什么需要验证码?
+——反爬</p>
+</li>
+<li>
+<p>Kaptcha怎么使用?
+——导入jar包：kaptcha-2.3.3.jar
+——在web.xxl文件中注册KaptchaServlet，并设置验证码图片的相关属性
+kaptcha的验证码图片的各个属性在Constants类中</p>
+<p>——在html页面上编写一个img标签，然后设置src等于KaptchaServlet对应的url-patten</p>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#f92672">&lt;servlet&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;servlet-name&gt;</span>KaptchaServlet<span style="color:#f92672">&lt;/servlet-name&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;servlet-class&gt;</span>com.google.code.kaptcha.setlet.KaptchaServlet<span style="color:#f92672">&lt;/servlet-class&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/setlet&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;servlet-mapping&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;servlet-name&gt;</span>KaptchaServlet<span style="color:#f92672">&lt;/servlet-name&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;url-patten&gt;</span>kaptcha.jpg<span style="color:#f92672">&lt;/url-patten&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/server-mapping&gt;</span>
+</span></span></code></pre></div><ul>
+<li>KaptchaServlet在生成验证码时，会同时将验证码信息保存到session中；因此，我们在注册请求时，首先将用户文本框输入的验证码值和session中保存的值进行比较，若相等，则进行注册。</li>
+</ul>
+<h3 id="js-exp">
+  JS-Exp
+  <a class="anchor" href="#js-exp">#</a>
+</h3>
+<ul>
+<li>
+<p>正则表达式的使用三步骤：</p>
+<ul>
+<li>
+<p>定义正则表达式对象</p>
+<ul>
+<li>
+<p>对象形式：<code>var reg = new RegExp(&quot;abc&quot;);</code></p>
+</li>
+<li>
+<p>直接量形式：<code>var reg = /abc/;</code></p>
+</li>
+<li>
+<p>匹配模式：</p>
+<ul>
+<li>g 全局匹配</li>
+<li>i 忽略大小写匹配</li>
+<li>m 多行匹配</li>
+<li>gim这三个可以组合使用，不区分先后顺序
+例如： <code>var reg = /abc/gim;</code> , <code>var reg = new RegExp(&quot;abc&quot;,&quot;gim&quot;);</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>定义待校验的字符串</p>
+</li>
+<li>
+<p>校验</p>
+</li>
+</ul>
+</li>
+<li>
+<p>元字符
+<code>. , \w , \W , \s , \S , \d , \D , \b , ^ , $</code></p>
+</li>
+<li>
+<p>[]表示集合</p>
+<ul>
+<li><code>[abc]</code> 表示 a或者b或者c</li>
+<li><code>[^abc]</code> 表示取反，只要不是a不是b不是c就匹配</li>
+<li><code>[a-c]</code> 表示a到c这个范围匹配</li>
+</ul>
+</li>
+<li>
+<p>出现的次数</p>
+<ul>
+<li><code>*</code> 表示多次 （0 ~ n ）</li>
+</ul>
+<ul>
+<li><code>+</code>至少一次 ( &gt;=1 )</li>
+<li><code>?</code> 最多一次 (0 ~ 1)</li>
+<li><code>{n}</code> 出现n次</li>
+<li><code>{n,}</code> 出现n次或者多次</li>
+<li><code>{n,m}</code> 出现n到m次</li>
+</ul>
+</li>
+</ul>
+<h3 id="ajax">
+  Ajax
+  <a class="anchor" href="#ajax">#</a>
+</h3>
+<ul>
+<li>
+<p>Ajax : 异步的JavaScript and XML</p>
+<ul>
+<li>目的： 用来发送异步的请求，然后当服务器给我响应的时候再进行回调操作</li>
+<li>好处： 提高用户体验；局部刷新：降低服务器负担、减轻浏览器压力、减轻网络带宽压力</li>
+</ul>
+</li>
+<li>
+<p>原生的Ajax（了解）</p>
+<ul>
+<li>
+<p>第一步： 客户端发送异步请求；并绑定对结果处理的回调函数</p>
+  <input type="text" name="uname" onblur="ckUname()"/>
+<ul>
+<li>
+<p>定义ckUname方法：</p>
+</li>
+<li>
+<p>创建XMLHttpRequest对象</p>
+</li>
+<li>
+<p>XMLHttpRequest对象操作步骤：</p>
+<ul>
+<li>open(url,&ldquo;GET&rdquo;,true)</li>
+<li>onreadyStateChange 设置回调</li>
+<li>send() 发送请求</li>
+</ul>
+</li>
+<li>
+<p>在回调函数中需要判断XMLHttpRequest对象的状态:
+readyState(0-4) , status(200)</p>
+<blockquote>
+<p>0 － （未初始化）还没有调用send()方法
+1 － （载入）已调用send()方法，正在发送请求
+2 － （载入完成）send()方法执行完成，已经接收到全部响应内容
+3 － （交互）正在解析响应内容
+4 － （完成）响应内容解析完成，可以在客户端调用了</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li>
+<p>第二步：服务器端做校验，然后将校验结果响应给客户端</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="vue">
+  Vue
+  <a class="anchor" href="#vue">#</a>
+</h3>
+<ul>
+<li>
+<p>Vue 
+  <a href="http://heavy_code_industry.gitee.io/code_heavy_industry/pro001-javaweb/lecture/chapter04/">链接</a></p>
+<ul>
+<li>
+<p>{{}} - 相当于innerText</p>
+</li>
+<li>
+<p>v-bind:attr 绑定属性值。例如，v-bind:value - 绑定value值
+简写：    :value</p>
+</li>
+<li>
+<p>v-model 双向绑定
+v-model:value   , 简写  v-model</p>
+</li>
+<li>
+<p>v-if , v-else , v-show
+v-if和v-else之间不能有其他的节点
+v-show是通过样式表display来控制节点是否显示</p>
+</li>
+<li>
+<p>v-for 迭代
+v-for={fruit in fruitList}</p>
+</li>
+<li>
+<p>v-on 绑定事件</p>
+</li>
+<li>
+<p>其他：</p>
+<ul>
+<li>
+<p>trim:去除首尾空格 , split() , join()</p>
+</li>
+<li>
+<p>watch表示侦听属性</p>
+</li>
+<li>
+<p>生命周期</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="axios">
+  Axios
+  <a class="anchor" href="#axios">#</a>
+</h3>
+<ul>
+<li>
+<p>Axios是Ajax的一个框架，简化Ajax操作</p>
+</li>
+<li>
+<p>Axios执行Ajax操作的步骤：</p>
+<ol>
+<li>
+<p>添加并引入axios的js文件</p>
+</li>
+<li>
+<p>客户端向服务器端异步发送普通参数值</p>
+<ul>
+<li>
+<p>基本格式： axios().then().catch()</p>
+</li>
+<li>
+<p>示例：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">axios</span>({
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">method</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;POST&#34;</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">url</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;....&#34;</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">params</span><span style="color:#f92672">:</span>{
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">uname</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;lina&#34;</span>,
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">pwd</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;ok&#34;</span>
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>})
+</span></span><span style="display:flex;"><span>	.<span style="color:#a6e22e">then</span>(<span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">value</span>){})     <span style="color:#75715e">//成功响应时执行的回调  value.data可以获取到服务器响应内容
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	.<span style="color:#66d9ef">catch</span>(<span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">reason</span>){});  <span style="color:#75715e">//有异常时执行的回调   reason.response.data可以获取到响应的内容
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                                 <span style="color:#75715e">// reason.message / reason.stack 可以查看错误的信息
+</span></span></span></code></pre></div></li>
+</ul>
+</li>
+<li>
+<p>客户端向服务器发送JSON格式的数据</p>
+</li>
+</ol>
+</li>
+</ul>
+<h3 id="json">
+  JSON
+  <a class="anchor" href="#json">#</a>
+</h3>
+<ul>
+<li>
+<p>什么是JSON
+JSON是一种数据格式
+XML也是一种数据格式
+XML格式表示两个学员信息的代码如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#f92672">&lt;students&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;student</span> <span style="color:#a6e22e">sid=</span><span style="color:#e6db74">&#34;s001&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&lt;sname&gt;</span>jim<span style="color:#f92672">&lt;/sname&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&lt;age&gt;</span>18<span style="color:#f92672">&lt;/age&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;/student&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;student</span> <span style="color:#a6e22e">sid=</span><span style="color:#e6db74">&#34;s002&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&lt;sname&gt;</span>tom<span style="color:#f92672">&lt;/sname&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&lt;age&gt;</span>19<span style="color:#f92672">&lt;/age&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;/student&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/students&gt;</span>
+</span></span></code></pre></div><p>JSON格式表示两个学员信息的代码如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>[{<span style="color:#960050;background-color:#1e0010">sid:</span><span style="color:#f92672">&#34;s001&#34;</span>,<span style="color:#960050;background-color:#1e0010">age:18</span>},{<span style="color:#960050;background-color:#1e0010">sid:</span><span style="color:#f92672">&#34;s002&#34;</span>,<span style="color:#960050;background-color:#1e0010">age:19</span>}]
+</span></span></code></pre></div></li>
+<li>
+<p>JSON表达数据更简洁，更能够节约网络带宽</p>
+</li>
+<li>
+<p>客户端发送JSON格式的数据给服务器端</p>
+<ol>
+<li>客户端中params需要修改成：  data:</li>
+</ol>
+<ol start="2">
+<li>
+<p>服务器获取参数值不再是 request.getParameter()&hellip;
+而是：
+StringBuffer stringBuffer = new StringBuffer(&quot;&quot;);
+BufferedReader bufferedReader = request.getReader();
+String str = null ;
+while((str=bufferedReader.readLine())!=null){
+stringBuffer.append(str);
+}
+str = stringBuffer.toString() ;</p>
+</li>
+<li>
+<p>我们会发现 str的内容如下：
+{&ldquo;uname&rdquo;:&ldquo;lina&rdquo;,&ldquo;pwd&rdquo;:&ldquo;ok&rdquo;}</p>
+</li>
+</ol>
+</li>
+<li>
+<p>服务器端给客户端响应JSON格式的字符串，然后客户端需要将字符串转化成js Object</p>
+</li>
+</ul>
+<p>
+  <img src="imgs/javaweb.assets/image-20220719222557757-16690387838943.png" alt="image-20220719222557757" /></p>
+<ul>
+<li>
+<p>转换过程：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">//java中//
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">//JSON String --&gt; java Object
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>Gson gson <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Gson<span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>Object obj <span style="color:#f92672">=</span> gson<span style="color:#f92672">.</span><span style="color:#a6e22e">fromJson</span><span style="color:#f92672">(</span>str<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//java Object --&gt; JSON String
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>Gson gson <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Gson<span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>String str <span style="color:#f92672">=</span> gson<span style="color:#f92672">.</span><span style="color:#a6e22e">toJson</span><span style="color:#f92672">(</span>obj<span style="color:#f92672">);</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">//Javascript中//
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">//js Object --&gt; JSON String
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">str</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>(<span style="color:#a6e22e">obj</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//JSON String --&gt; js Object
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">obj</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">parse</span>(<span style="color:#a6e22e">str</span>);
+</span></span></code></pre></div></li>
+</ul>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+  <div>
+    <a class="flex align-center" href="https://github.com/zyu0211/zyu0211.github.io//edit/main/exampleSite/content/java/javaweb.md" target="_blank" rel="noopener">
+      <img src="/svg/edit.svg" class="book-icon" alt="Edit" />
+      <span>Edit this page</span>
+    </a>
+  </div>
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#一基础知识">一、基础知识</a>
+          <ul>
+            <li><a href="#常见异常">常见异常</a></li>
+            <li><a href="#tomcat服务器">Tomcat服务器</a></li>
+            <li><a href="#编码设置">编码设置</a></li>
+            <li><a href="#servlet的继承关系">Servlet的继承关系</a></li>
+            <li><a href="#servlet的生命周期">Servlet的生命周期</a></li>
+            <li><a href="#http协议">Http协议</a></li>
+            <li><a href="#session会话">Session会话</a></li>
+            <li><a href="#服务器内部转发以及客户端重定向">服务器内部转发以及客户端重定向</a></li>
+            <li><a href="#thymeleaf---视图模板技术">Thymeleaf - 视图模板技术</a></li>
+            <li><a href="#保存作用域">保存作用域</a></li>
+            <li><a href="#路径问题">路径问题</a></li>
+          </ul>
+        </li>
+        <li><a href="#二mvc基础">二、MVC基础</a>
+          <ul>
+            <li><a href="#review">review</a></li>
+            <li><a href="#servlet的初始化方法">Servlet的初始化方法</a></li>
+            <li><a href="#什么是业务层">什么是业务层</a></li>
+            <li><a href="#ioc">IOC</a></li>
+            <li><a href="#过滤器filter">过滤器Filter</a></li>
+            <li><a href="#事务管理">事务管理</a></li>
+            <li><a href="#监听器listener">监听器Listener</a></li>
+            <li><a href="#cookie">Cookie</a></li>
+            <li><a href="#kaptcha">Kaptcha</a></li>
+            <li><a href="#js-exp">JS-Exp</a></li>
+            <li><a href="#ajax">Ajax</a></li>
+            <li><a href="#vue">Vue</a></li>
+            <li><a href="#axios">Axios</a></li>
+            <li><a href="#json">JSON</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

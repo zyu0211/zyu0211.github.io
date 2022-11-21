@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>java基础 on ZYU BOOk</title>
+    <link>https://zyu0211.github.io/java/</link>
+    <description>Recent content in java基础 on ZYU BOOk</description>
+    <generator>Hugo -- gohugo.io</generator><atom:link href="https://zyu0211.github.io/java/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>javaSE</title>
+      <link>https://zyu0211.github.io/java/javaSE/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://zyu0211.github.io/java/javaSE/</guid>
+      <description>一、基础概念#1、Java语言概述#1.1 软件开发介绍#软件开发：一系列按照特定顺序组织的计算机数据和指令的集合。软件有系统软件和应用软件之分。 人机交互方式： 图形化界面(Graphical User Interface GUI)：这种方式简单直观，使用者易于接受，容易上手操作 命令行方式(Command Line InterfaceCLI)：需要有一个控制台，输入特定的指令，让计算机完成一些操作。较为麻烦，需要记录住一些命令。 常用的DOS命令 ⊞+R，一起按下，输入cmd，可以打开dos界面。 dir :列出当前目录下的文件以及文件夹 md :创建目录 rd :删除目录 cd :进入指定目录 cd… : 退回到上一级目录 del :删除文件 exit : 退出dos 命令行 常用快捷键 ← →：移动光标 ↑↓：调阅历史操作命令 Delete和Backspace：删除字符 注意：在输入dos命令时，要是用英文输入，所有标点符号都是英文。 1.2 计算机编程语言介绍#计算机语言：人与计算机交流的方式。如果人要与计算机交流，那么就要学习计算机语言。计算机语言有很多种，如：C，C++，Java，PHP，Kotlin，Python，Scala等。 第一代语言 机器语言：指令以二进制代码形式存在。 第二代语言 汇编语言：使用助记符表示一条机器指令。 第三代语言： 高级语言： C、Pascal、Fortran面向过程的语言 C++面向过程/面向对象 Java跨平台的纯面向对象的语言 .NET跨语言的平台 Python、Scala… 1.3 Java语言概述#java是SUN(Stanford University Network，斯坦福大学网络公司) 1995年推出的一门高级编程语言。 Java简史 1991年，Green项目，开发语言最初命名为Oak (橡树) 1994年，开发组意识到Oak 非常适合于互联网 1996年，发布JDK 1.</description>
+    </item>
+    
+    <item>
+      <title>JavaWeb入门</title>
+      <link>https://zyu0211.github.io/java/javaweb/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://zyu0211.github.io/java/javaweb/</guid>
+      <description>笔记链接：http://heavy_code_industry.gitee.io/code_heavy_industry/pro001-javaweb/
+一、基础知识#常见异常#200 : 正常响应 404 : 找不到资源 405 : 请求方式不支持 500 : 服务器内部错误 Tomcat服务器#编码设置#tomcat8之前，设置编码：
+get请求方式：
+//get方式目前不需要设置编码（基于tomcat8） //如果是get请求发送的中文数据，转码稍微有点麻烦（tomcat8之前） String fname = request.getParameter(&amp;#34;fname&amp;#34;);//1.获取字符串 byte[] bytes = fname.getBytes(&amp;#34;ISO-8859-1&amp;#34;); //2.将字符串打散成字节数组 fname = new String(bytes,&amp;#34;UTF-8&amp;#34;); //3.将字节数组按照设定的编码重新组装成字符串 post请求方式：
+request.setCharacterEncoding(&amp;#34;UTF-8&amp;#34;); //在获取字符串之前 tomcat8开始，设置编码，只需要针对post方式
+request.setCharacterEncoding(&amp;#34;UTF-8&amp;#34;); 注意： 需要注意的是，设置编码(post)这一句代码必须在所有的获取参数动作之前
+Servlet的继承关系#继承关系 javax.servlet.Servlet接口 &amp;mdash;javax.servlet.GenericServlet抽象类 &amp;mdash;&amp;mdash;javax.servlet.http.HttpServlet抽象子类
+相关方法 (重点查看的是服务方法service() )
+javax.servlet.**Servlet **接口：
+public interface Servlet { //初始化方法 void init(ServletConfig var1) throws ServletException; ServletConfig getServletConfig(); //服务方法 void service(ServletRequest var1, ServletResponse var2) throws ServletException, IOException; String getServletInfo(); //销毁方法 void destroy(); } javax.</description>
+    </item>
+    
+  </channel>
+</rss>
